@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centro Educacional Soares | Painel do Aluno</title>
+  <meta name="description" content="Portal do Aluno do Centro Educacional Soares - Grade horária, avaliações, declarações e cardápio escolar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout" id="appLayout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__header">
+        <div class="sidebar__brand">
+          <div class="brand-logo">
+            <span class="brand-logo__symbol">S+</span>
+          </div>
+          <figure class="brand-info">
+            <figcaption class="brand-info__title">Centro Educacional Soares</figcaption>
+            <span class="brand-info__role">Painel do Aluno</span>
+          </figure>
+        </div>
+        <button class="sidebar__toggle" id="sidebarToggle" aria-label="Recolher menu lateral" title="Alternar menu">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="sidebar__nav">
+        <!-- Seção Principal -->
+        <div class="nav-section">
+          <span class="nav-section__title">Menu Acadêmico</span>
+          <ul class="list--primary">
+            <li class="nav-item">
+              <button class="nav-link active" data-target="grade-horaria" id="nav-grade">
+                <span class="nav-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                </span>
+                <span class="nav-label">Grade Horária</span>
+                <span class="badge-active-dot"></span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-target="avaliacoes" id="nav-avaliacoes">
+                <span class="nav-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </span>
+                <span class="nav-label">Avaliações</span>
+                <span class="nav-badge">3</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-target="declaracoes" id="nav-declaracoes">
+                <span class="nav-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                    <polyline points="13 2 13 9 20 9"></polyline>
+                    <path d="M9 17h6"></path>
+                    <path d="M9 13h6"></path>
+                  </svg>
+                </span>
+                <span class="nav-label">Declarações</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-target="cardapio" id="nav-cardapio">
+                <span class="nav-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a4 4 0 0 0-4 4v1a4 4 0 0 0-4 4v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a4 4 0 0 0-4-4V6a4 4 0 0 0-4-4z"></path>
+                    <path d="M12 2v4"></path>
+                    <circle cx="9" cy="14" r="1"></circle>
+                    <circle cx="15" cy="14" r="1"></circle>
+                  </svg>
+                </span>
+                <span class="nav-label">Cardápio</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Seção Secundária -->
+        <div class="nav-section nav-section--secondary">
+          <span class="nav-section__title">Geral</span>
+          <ul class="list--secondary">
+            <li class="nav-item">
+              <button class="nav-link" data-target="perfil" id="nav-perfil">
+                <span class="nav-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </span>
+                <span class="nav-label">Perfil</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-target="configuracoes" id="nav-config">
+                <span class="nav-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                  </svg>
+                </span>
+                <span class="nav-label">Configurações</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link nav-link--danger" id="nav-sair" onclick="handleLogout()">
+                <span class="nav-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                  </svg>
+                </span>
+                <span class="nav-label">Sair</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Perfil Compacto Rodapé -->
+      <div class="sidebar__footer">
+        <div class="student-pill">
+          <div class="student-avatar">LP</div>
+          <div class="student-details">
+            <span class="student-name">Lucas Pinheiro</span>
+            <span class="student-meta">3º Ano B — Matr. 2026048</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+      <!-- Topbar Header -->
+      <header class="topbar">
+        <div class="topbar__left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu lateral">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="topbar__title-group">
+            <h1 class="page-title" id="pageTitle">Grade Horária</h1>
+            <p class="page-subtitle">Ano Letivo 2026 • 1º Semestre • Turma 3º B (Ensino Médio)</p>
+          </div>
+        </div>
+
+        <div class="topbar__right">
+          <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="filterInput" placeholder="Filtrar por matéria ou professor..." aria-label="Filtrar matérias">
+          </div>
+
+          <div class="topbar__actions">
+            <button class="action-btn" title="Notificações" id="btnNotifications">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="notification-indicator"></span>
+            </button>
+            
+            <button class="btn-print" onclick="window.print()" title="Imprimir Grade">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span>Imprimir</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Conteúdo da Página -->
+      <div class="content-body">
+
+        <!-- ABA: GRADE HORÁRIA (Ativa) -->
+        <section class="tab-pane active" id="pane-grade-horaria">
+          
+          <!-- Banner / Resumo Informativo -->
+          <div class="stats-overview">
+            <div class="stat-card">
+              <div class="stat-card__icon stat-card__icon--primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="stat-card__content">
+                <span class="stat-card__value">30 Horas/sem</span>
+                <span class="stat-card__label">Carga Horária Semanal</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card__icon stat-card__icon--dark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="stat-card__content">
+                <span class="stat-card__value">6 Docentes</span>
+                <span class="stat-card__label">Corpo Docente Ativo</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card__icon stat-card__icon--accent">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+              <div class="stat-card__content">
+                <span class="stat-card__value">Turno Matutino</span>
+                <span class="stat-card__label">07:15 às 12:45</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Principal da Grade Horária -->
+          <div class="schedule-card">
+            <div class="schedule-card__header">
+              <div class="schedule-card__title-wrap">
+                <h2 class="schedule-card__title">Quadro Semanal de Disciplinas</h2>
+                <span class="tag-status">Em Vigência</span>
+              </div>
+              <div class="schedule-legend">
+                <span class="legend-item"><span class="legend-dot legend-dot--room"></span> Sala</span>
+                <span class="legend-item"><span class="legend-dot legend-dot--teacher"></span> Professor</span>
+                <span class="legend-item"><span class="legend-dot legend-dot--subject"></span> Matéria</span>
+              </div>
+            </div>
+
+            <!-- Tabela com Scroll Horizontal Seguro -->
+            <div class="table-responsive">
+              <table class="schedule-table" id="scheduleTable">
+                <thead>
+                  <tr>
+                    <th class="col-time">Horário</th>
+                    <th class="col-day">Segunda-feira</th>
+                    <th class="col-day">Terça-feira</th>
+                    <th class="col-day">Quarta-feira</th>
+                    <th class="col-day">Quinta-feira</th>
+                    <th class="col-day">Sexta-feira</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 1º Horário -->
+                  <tr class="schedule-row">
+                    <td class="cell-time">
+                      <span class="time-slot-index">1º Horário</span>
+                      <span class="time-slot-hours">07:15 - 08:05</span>
+                    </td>
+                    <td class="cell-class" data-subject="Matemática">
+                      <div class="class-card">
+                        <span class="class-room">Sala 201</span>
+                        <h4 class="class-subject">Matemática</h4>
+                        <p class="class-teacher">Ana Paula</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="História">
+                      <div class="class-card">
+                        <span class="class-room">Sala 203</span>
+                        <h4 class="class-subject">História</h4>
+                        <p class="class-teacher">Carlos Mendes</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Biologia">
+                      <div class="class-card">
+                        <span class="class-room">Sala 202</span>
+                        <h4 class="class-subject">Biologia</h4>
+                        <p class="class-teacher">Juliana Alves</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Física">
+                      <div class="class-card">
+                        <span class="class-room">Sala 204</span>
+                        <h4 class="class-subject">Física</h4>
+                        <p class="class-teacher">Marcos Silva</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Português">
+                      <div class="class-card">
+                        <span class="class-room">Sala 201</span>
+                        <h4 class="class-subject">Português</h4>
+                        <p class="class-teacher">Renata Souza</p>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- 2º Horário -->
+                  <tr class="schedule-row">
+                    <td class="cell-time">
+                      <span class="time-slot-index">2º Horário</span>
+                      <span class="time-slot-hours">08:05 - 08:55</span>
+                    </td>
+                    <td class="cell-class" data-subject="Matemática">
+                      <div class="class-card">
+                        <span class="class-room">Sala 201</span>
+                        <h4 class="class-subject">Matemática</h4>
+                        <p class="class-teacher">Ana Paula</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="História">
+                      <div class="class-card">
+                        <span class="class-room">Sala 203</span>
+                        <h4 class="class-subject">História</h4>
+                        <p class="class-teacher">Carlos Mendes</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Biologia">
+                      <div class="class-card">
+                        <span class="class-room">Sala 202</span>
+                        <h4 class="class-subject">Biologia</h4>
+                        <p class="class-teacher">Juliana Alves</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Física">
+                      <div class="class-card">
+                        <span class="class-room">Sala 204</span>
+                        <h4 class="class-subject">Física</h4>
+                        <p class="class-teacher">Marcos Silva</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Português">
+                      <div class="class-card">
+                        <span class="class-room">Sala 201</span>
+                        <h4 class="class-subject">Português</h4>
+                        <p class="class-teacher">Renata Souza</p>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- 3º Horário -->
+                  <tr class="schedule-row">
+                    <td class="cell-time">
+                      <span class="time-slot-index">3º Horário</span>
+                      <span class="time-slot-hours">08:55 - 09:45</span>
+                    </td>
+                    <td class="cell-class" data-subject="Química">
+                      <div class="class-card">
+                        <span class="class-room">Sala 205</span>
+                        <h4 class="class-subject">Química</h4>
+                        <p class="class-teacher">Felipe Rocha</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Português">
+                      <div class="class-card">
+                        <span class="class-room">Sala 201</span>
+                        <h4 class="class-subject">Português</h4>
+                        <p class="class-teacher">Renata Souza</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Matemática">
+                      <div class="class-card">
+                        <span class="class-room">Sala 201</span>
+                        <h4 class="class-subject">Matemática</h4>
+                        <p class="class-teacher">Ana Paula</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="História">
+                      <div class="class-card">
+                        <span class="class-room">Sala 203</span>
+                        <h4 class="class-subject">História</h4>
+                        <p class="class-teacher">Carlos Mendes</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Educação Física">
+                      <div class="class-card">
+                        <span class="class-room">Sala 206</span>
+                        <h4 class="class-subject">Educação Física</h4>
+                        <p class="class-teacher">Bruno Costa</p>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- LINHA DE INTERVALO COM DESTAQUE ESPECIAL -->
+                  <tr class="schedule-row--break">
+                    <td class="cell-time cell-time--break">
+                      <span class="time-slot-index">Intervalo</span>
+                      <span class="time-slot-hours">09:45 - 10:15</span>
+                    </td>
+                    <td colspan="5" class="cell-break-banner">
+                      <div class="break-content">
+                        <span class="break-icon">☕</span>
+                        <div class="break-text-group">
+                          <strong>Intervalo & Lanche</strong>
+                          <span>Pátio Central & Cantina Escolar • 30 minutos de recreio</span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- 4º Horário -->
+                  <tr class="schedule-row">
+                    <td class="cell-time">
+                      <span class="time-slot-index">4º Horário</span>
+                      <span class="time-slot-hours">10:15 - 11:05</span>
+                    </td>
+                    <td class="cell-class" data-subject="Química">
+                      <div class="class-card">
+                        <span class="class-room">Sala 205</span>
+                        <h4 class="class-subject">Química</h4>
+                        <p class="class-teacher">Felipe Rocha</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Português">
+                      <div class="class-card">
+                        <span class="class-room">Sala 201</span>
+                        <h4 class="class-subject">Português</h4>
+                        <p class="class-teacher">Renata Souza</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Matemática">
+                      <div class="class-card">
+                        <span class="class-room">Sala 201</span>
+                        <h4 class="class-subject">Matemática</h4>
+                        <p class="class-teacher">Ana Paula</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="História">
+                      <div class="class-card">
+                        <span class="class-room">Sala 203</span>
+                        <h4 class="class-subject">História</h4>
+                        <p class="class-teacher">Carlos Mendes</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Educação Física">
+                      <div class="class-card">
+                        <span class="class-room">Sala 206</span>
+                        <h4 class="class-subject">Educação Física</h4>
+                        <p class="class-teacher">Bruno Costa</p>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- 5º Horário -->
+                  <tr class="schedule-row">
+                    <td class="cell-time">
+                      <span class="time-slot-index">5º Horário</span>
+                      <span class="time-slot-hours">11:05 - 11:55</span>
+                    </td>
+                    <td class="cell-class" data-subject="Física">
+                      <div class="class-card">
+                        <span class="class-room">Sala 204</span>
+                        <h4 class="class-subject">Física</h4>
+                        <p class="class-teacher">Marcos Silva</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Biologia">
+                      <div class="class-card">
+                        <span class="class-room">Sala 202</span>
+                        <h4 class="class-subject">Biologia</h4>
+                        <p class="class-teacher">Juliana Alves</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Química">
+                      <div class="class-card">
+                        <span class="class-room">Sala 205</span>
+                        <h4 class="class-subject">Química</h4>
+                        <p class="class-teacher">Felipe Rocha</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Educação Física">
+                      <div class="class-card">
+                        <span class="class-room">Sala 206</span>
+                        <h4 class="class-subject">Educação Física</h4>
+                        <p class="class-teacher">Bruno Costa</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Física">
+                      <div class="class-card">
+                        <span class="class-room">Sala 204</span>
+                        <h4 class="class-subject">Física</h4>
+                        <p class="class-teacher">Marcos Silva</p>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- 6º Horário -->
+                  <tr class="schedule-row">
+                    <td class="cell-time">
+                      <span class="time-slot-index">6º Horário</span>
+                      <span class="time-slot-hours">11:55 - 12:45</span>
+                    </td>
+                    <td class="cell-class" data-subject="Física">
+                      <div class="class-card">
+                        <span class="class-room">Sala 204</span>
+                        <h4 class="class-subject">Física</h4>
+                        <p class="class-teacher">Marcos Silva</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Biologia">
+                      <div class="class-card">
+                        <span class="class-room">Sala 202</span>
+                        <h4 class="class-subject">Biologia</h4>
+                        <p class="class-teacher">Juliana Alves</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Química">
+                      <div class="class-card">
+                        <span class="class-room">Sala 205</span>
+                        <h4 class="class-subject">Química</h4>
+                        <p class="class-teacher">Felipe Rocha</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Educação Física">
+                      <div class="class-card">
+                        <span class="class-room">Sala 206</span>
+                        <h4 class="class-subject">Educação Física</h4>
+                        <p class="class-teacher">Bruno Costa</p>
+                      </div>
+                    </td>
+                    <td class="cell-class" data-subject="Física">
+                      <div class="class-card">
+                        <span class="class-room">Sala 204</span>
+                        <h4 class="class-subject">Física</h4>
+                        <p class="class-teacher">Marcos Silva</p>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Rodapé informativo de aviso escolar -->
+          <div class="info-alert">
+            <div class="info-alert__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </div>
+            <div class="info-alert__text">
+              <strong>Atenção às Mudanças de Sala:</strong> As aulas práticas de Química e Biologia podem ocorrer nos Laboratórios 1 e 2 no Bloco B. Fique atento às orientações dos docentes.
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ABA: AVALIAÇÕES -->
+        <section class="tab-pane" id="pane-avaliacoes">
+          <div class="page-placeholder-card">
+            <div class="placeholder-header">
+              <div class="placeholder-badge">1º Bimestre 2026</div>
+              <h2>Calendário e Boletim de Avaliações</h2>
+              <p>Acompanhe suas notas parciais, provas agendadas e trabalhos entregues.</p>
+            </div>
+
+            <div class="eval-grid">
+              <div class="eval-card">
+                <div class="eval-card__header">
+                  <span class="eval-tag eval-tag--danger">Próxima Semana</span>
+                  <span class="eval-date">24/Ago • 08:05</span>
+                </div>
+                <h3>P1 — Matemática (Álgebra Linear)</h3>
+                <p>Profª. Ana Paula • Conteúdo: Capítulos 1 ao 3</p>
+                <div class="eval-progress">
+                  <div class="eval-progress__bar" style="width: 75%;"></div>
+                </div>
+              </div>
+
+              <div class="eval-card">
+                <div class="eval-card__header">
+                  <span class="eval-tag eval-tag--warning">Trabalho em Grupo</span>
+                  <span class="eval-date">28/Ago • 11:05</span>
+                </div>
+                <h3>Seminário — Biologia Celular</h3>
+                <p>Profª. Juliana Alves • Entrega de slides e artigo</p>
+                <div class="eval-progress">
+                  <div class="eval-progress__bar" style="width: 40%;"></div>
+                </div>
+              </div>
+
+              <div class="eval-card">
+                <div class="eval-card__header">
+                  <span class="eval-tag eval-tag--success">Nota Lançada</span>
+                  <span class="eval-date">10/Ago</span>
+                </div>
+                <h3>P1 — Física Mecânica</h3>
+                <p>Prof. Marcos Silva • <strong>Nota obtida: 9.5 / 10.0</strong></p>
+                <div class="eval-progress">
+                  <div class="eval-progress__bar eval-progress__bar--success" style="width: 95%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABA: DECLARAÇÕES -->
+        <section class="tab-pane" id="pane-declaracoes">
+          <div class="page-placeholder-card">
+            <div class="placeholder-header">
+              <div class="placeholder-badge">Secretaria Virtual</div>
+              <h2>Emissão de Documentos e Declarações</h2>
+              <p>Solicite e faça download imediato de declarações autenticadas com código validador QR Code.</p>
+            </div>
+
+            <div class="doc-list">
+              <div class="doc-item">
+                <div class="doc-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                </div>
+                <div class="doc-info">
+                  <h4>Declaração de Matrícula Regular</h4>
+                  <p>Documento oficial que atesta o vínculo do aluno no 3º Ano do Ensino Médio.</p>
+                </div>
+                <button class="btn-doc" onclick="showToast('Declaração de Matrícula gerada com sucesso!')">Baixar PDF</button>
+              </div>
+
+              <div class="doc-item">
+                <div class="doc-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                </div>
+                <div class="doc-info">
+                  <h4>Atestado de Frequência Escolar</h4>
+                  <p>Comprovante de presença e assiduidade às aulas do semestre letivo.</p>
+                </div>
+                <button class="btn-doc" onclick="showToast('Atestado de Frequência gerado com sucesso!')">Baixar PDF</button>
+              </div>
+
+              <div class="doc-item">
+                <div class="doc-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                </div>
+                <div class="doc-info">
+                  <h4>Histórico Escolar Parcial</h4>
+                  <p>Demonstrativo com notas e carga horária cumprida dos anos anteriores.</p>
+                </div>
+                <button class="btn-doc" onclick="showToast('Histórico Escolar gerado com sucesso!')">Baixar PDF</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABA: CARDÁPIO -->
+        <section class="tab-pane" id="pane-cardapio">
+          <div class="page-placeholder-card">
+            <div class="placeholder-header">
+              <div class="placeholder-badge">Nutrição & Cantina</div>
+              <h2>Cardápio Semanal da Cantina Escolar</h2>
+              <p>Refeições balanceadas acompanhadas por nutricionistas do Centro Educacional Soares.</p>
+            </div>
+
+            <div class="menu-grid">
+              <div class="menu-card">
+                <div class="menu-card__day">Segunda-feira</div>
+                <h4 class="menu-dish">Sanduíche Natural Integral & Suco de Laranja</h4>
+                <p>Pão integral, peito de peru, queijo minas, alface e tomate fresco.</p>
+                <span class="calorie-badge">⚡ 320 kcal</span>
+              </div>
+
+              <div class="menu-card">
+                <div class="menu-card__day">Terça-feira</div>
+                <h4 class="menu-dish">Salada de Frutas com Granola & Iogurte</h4>
+                <p>Mamão, banana, morango, maçã com iogurte desnatado e mel.</p>
+                <span class="calorie-badge">⚡ 260 kcal</span>
+              </div>
+
+              <div class="menu-card">
+                <div class="menu-card__day">Quarta-feira</div>
+                <h4 class="menu-dish">Torta Rústica de Frango com Legumes</h4>
+                <p>Massa leve de aveia com recheio cremoso e suco de uva integral.</p>
+                <span class="calorie-badge">⚡ 380 kcal</span>
+              </div>
+
+              <div class="menu-card">
+                <div class="menu-card__day">Quinta-feira</div>
+                <h4 class="menu-dish">Pão de Queijo Mineiro Artesanal & Fruta</h4>
+                <p>Porção com 3 unidades assadas na hora acompanhadas de maçã fuji.</p>
+                <span class="calorie-badge">⚡ 310 kcal</span>
+              </div>
+
+              <div class="menu-card">
+                <div class="menu-card__day">Sexta-feira</div>
+                <h4 class="menu-dish">Wrap de Atum com Cenoura & Suco de Maracujá</h4>
+                <p>Tortilha integral leve com pasta de atum fresca e folhas verdes.</p>
+                <span class="calorie-badge">⚡ 290 kcal</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABA: PERFIL -->
+        <section class="tab-pane" id="pane-perfil">
+          <div class="page-placeholder-card">
+            <div class="profile-layout">
+              <div class="profile-avatar-large">
+                <span>LP</span>
+              </div>
+              <div class="profile-details">
+                <h2>Lucas Pinheiro</h2>
+                <p class="profile-sub">Estudante • 3º Ano do Ensino Médio (Turma B)</p>
+                
+                <div class="profile-info-grid">
+                  <div class="info-field">
+                    <label>Matrícula</label>
+                    <span>2026048</span>
+                  </div>
+                  <div class="info-field">
+                    <label>E-mail Institucional</label>
+                    <span>lucas.pinheiro@soares.edu.br</span>
+                  </div>
+                  <div class="info-field">
+                    <label>Turno</label>
+                    <span>Matutino (07:15 - 12:45)</span>
+                  </div>
+                  <div class="info-field">
+                    <label>Responsável Financeiro / Legal</label>
+                    <span>Marcos Pinheiro / Helena Pinheiro</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABA: CONFIGURAÇÕES -->
+        <section class="tab-pane" id="pane-configuracoes">
+          <div class="page-placeholder-card">
+            <div class="placeholder-header">
+              <div class="placeholder-badge">Preferências</div>
+              <h2>Configurações do Sistema</h2>
+              <p>Personalize suas notificações e preferências de visualização da plataforma.</p>
+            </div>
+
+            <div class="config-list">
+              <div class="config-item">
+                <div>
+                  <h4>Notificações de Provas e Trabalhos</h4>
+                  <p>Receba lembretes 48h antes de cada avaliação agendada.</p>
+                </div>
+                <input type="checkbox" checked class="switch-input">
+              </div>
+
+              <div class="config-item">
+                <div>
+                  <h4>Alertas de Alteração de Sala</h4>
+                  <p>Notificar instantaneamente caso uma aula mude de laboratório ou sala.</p>
+                </div>
+                <input type="checkbox" checked class="switch-input">
+              </div>
+
+              <div class="config-item">
+                <div>
+                  <h4>Resumo Semanal por E-mail</h4>
+                  <p>Receber todo domingo a programação e cardápio da semana.</p>
+                </div>
+                <input type="checkbox" class="switch-input">
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
